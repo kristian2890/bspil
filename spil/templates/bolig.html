@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Product section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+            <div class="col-md-6">
+                <h5>Bolig Navn</h5>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Info</th>
+                        <th scope="col">Data</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Type</td>
+                        <td>Villa</td>
+                      </tr>
+                      <tr>
+                        <td>By</td>
+                        <td>Hørning</td>
+                      </tr>
+                      <tr>
+                        <td>Kommune</td>
+                        <td>Skanderborg</td>
+                      </tr>
+                      <tr>
+                        <td>Region</td>
+                        <td>Østjylland</td>
+                      </tr>
+                      <tr>
+                        <td>Liggetid</td>
+                        <td>30 dage</td>
+                      </tr>
+                      <tr>
+                        <td>Areal</td>
+                        <td>136 m2</td>
+                      </tr>
+                      <tr>
+                        <td>Grund</td>
+                        <td>195 m2</td>
+                      </tr>
+                      <tr>
+                        <td>År</td>
+                        <td>2015</td>
+                      </tr>
+                      <tr>
+                        <td>Renoveret</td>
+                        <td>Nej</td>
+                      </tr>
+                      <tr>
+                        <td>Værelser</td>
+                        <td>4</td>
+                      </tr>
+                      <tr>
+                        <td>Toiletter</td>
+                        <td>2</td>
+                      </tr>
+                      <tr>
+                        <td>Energi</td>
+                        <td>A</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <!-- <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 9rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                </div>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 9rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Info-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><h5>Ejendomsmæglerens bolig-beskrivelse</h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div class="col-md-6" id="bolig_2nd_image">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" >
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Images Carousel-->
+
+<!-- Related items section-->
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">Giv din vurdering</h2>
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="col mb-5">
+              <form class="row row-cols-lg g-3 align-items-center">
+                <div class="col-12">
+                  <label class="visually" for="inlineFormInputGroupText">Hvad er boligens udbudspris?</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="inlineFormInputGroupText" placeholder="Angiv beløbet her" required>
+                    <span class="input-group-text">DKK</span>
+                  </div>
+                </div>
+              
+                <div class="col-12">
+                  <label class="visually" for="inlineFormSelectPref">Din vurdering af denne bolig:</label>
+                  <select class="form-select" id="inlineFormSelectPref" required>
+                    <option value="1">1 (min)</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (max)</option>
+                  </select>
+                </div>
+              
+                <div class="col-12">
+                  <label class="visually" for="inlineFormSelectPref">Ville du byde på denne bolig?</label>
+                  <select class="form-select" id="inlineFormSelectPref" required>
+                    <option value="1">Nej</option>
+                    <option value="2">Ja</option>
+                  </select>
+                </div>
+              
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Indsend</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}          
+
