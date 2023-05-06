@@ -26,7 +26,7 @@ SECRET_KEY = config("DJANGO_SECRET_KEY", default=None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DJANGO_DEBUG", default=False) 
 
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default=None)
+ALLOWED_HOSTS = tuple(config("DJANGO_ALLOWED_HOSTS", default=None))
 
 
 # Application definition
