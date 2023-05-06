@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+</div>
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="card">
+            <h5 class="card-header">Highscore</h5>
+            <div class="card-body">
+              <h5 class="card-title">Oversigt over spillernes præstationer</h5>
+              <p class="card-text">Her kan du se, hvordan du har præsteret i forhold til dine konkurrenter. Spillerne er rangeret efter den gennemsnitlige difference mellem prisgæt og udbudspriserne.</p>
+              <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style='width:auto;'>Navn</th>
+                        <th scope="col" style='width:auto;'>Boliger</th>
+                        <th scope="col" style='width:auto;'>Avg Diff</th>
+                        <th scope="col" style='width:auto;'>% Diff</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in result %}
+                            <tr>
+                                <td>{{t.user__username}}</td>
+                                <td>{{t.total_homes}}</td> 
+                                <td>{{t.avg_difference|floatformat:0}} kr</td>
+                                <td>{{t.pct_difference|floatformat:0}}%</td>
+                            </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+            </div>
+          </div>
+          <div class="container px-5 my-5"></div>
+          
+          <h5 class="card-header" style="margin-bottom:10px;">Dine bud:</h5>
+            <div class="row gx-5">
+                {% for x in high_home_info %} 
+                <div class="col-lg-4 mb-5">
+                    <div class="card h-100 shadow border-0">
+                        {% for i in x.images.all %}  
+                            {% if forloop.first %}
+                            <img class="card-img-top" src="{{ i.image }}" alt="..." />
+                            {% endif %} 
+                        {% endfor %}
+                        
+                        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                            <div class="card-body">     
+                                <h5 class="card-title">{{x.title}}</h5>
+                            </div>
+                            <div class="container"> <!-- d-flex align-items-end justify-content-between -->
+                                
+                                    <!-- Product Card-->
+                                        <div class="col-md-12">
+                                            <table class="table table-striped" style="width:100%;">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" style='width:inherit;'>Info</th>
+                                                    <th scope="col" style='width:inherit;'>Data</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Dit gæt:</td>
+                                                    {% for a in x.scores.all %}  
+                                                    {% if user == a.user %}
+                                                    <td>{{a.priceguess}} kr</td> 
+                                                    {% endif %} 
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    <td>Udbudspris:</td>
+                                                    <td>{{x.pris|floatformat:0}} kr</td>
+                                                </tr>
+                                                <tr>
+                                                    {% for d in x.scores.all %} 
+                                                    {% if user == d.user %}       
+                                                        <td>Difference:</td>
+                                                        <td>{{d.get_difference|floatformat:0}} kr</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    {% for p in x.scores.all %} 
+                                                    {% if user == p.user %}       
+                                                        <td>%-Difference:</td>
+                                                        <td>{{p.get_difference_pct|floatformat:0}}%</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    <td>By:</td>
+                                                    <td>{{x.by}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Areal:</td>
+                                                    <td>{{x.areal|floatformat:0}} m2</td>
+                                                </tr>
+                                                <tr>
+                                                    {% for p in x.scores.all %} 
+                                                    {% if user == p.user %}       
+                                                        <td>Pris pr m2:</td>
+                                                        <td>{{p.get_price_per_square_meters|floatformat:0}} kr</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    {% for p in x.scores.all %} 
+                                                    {% if user == p.user %}       
+                                                        <td>Interesse:</td>
+                                                        <td>{{p.bidinterest}}</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    {% for p in x.scores.all %} 
+                                                    {% if user == p.user %}       
+                                                        <td>Score:</td>
+                                                        <td>{{p.score}}</td>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    <td>Mægler-link:</td>
+                                                    <td><a href={{x.home_id}}>Link</a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+</section>
+
+
+{% endblock content %}          
+

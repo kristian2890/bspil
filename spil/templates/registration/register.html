@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<!-- <form method="POST" action="">
+    {% csrf_token %}
+    <h3>REGISTER</h3>
+    <h5>{{form.username.label}}</h5>
+    {{form.username}}
+    <h5>{{form.email.label}}</h5>
+    {{form.email}}
+    <h5>{{form.password1.label}}</h5>
+    {{form.password1}}
+    <h5>{{form.password2.label}}</h5>
+    {{form.password2}}
+    <input type="submit" name="Create User">
+</form> -->
+
+<!-- templates/registration/login.html -->
+<div class="container px-5 my-5">
+    <h2>Register</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="container">
+        <button style="float:right;margin-top:5px;" type="submit" name="Create User" class="btn btn-primary">Register</button>
+      </div>
+    </form>
+  </div>
+
+{% endblock content %}   
+

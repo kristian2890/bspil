@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!-- Testimonial section-->
+<div class="py-5 bg-light">
+  <div class="container px-5 my-5">
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-10 col-xl-7">
+              <div class="text-center">
+                {% for x in home_info %}   
+                      <div class="card h-100 shadow border-0">
+                        {% for i in x.images.all %}  
+                            {% if forloop.first %}
+                            <img class="card-img-top" src="{{ i.image }}" alt="..." />
+                            {% endif %} 
+                          {% endfor %}
+                        <div class="card-body p-4">
+                          
+                          <h5 class="card-title mb-3">{{x.title}}</h5>
+                          {% for s in scores_info %}
+                            <p class="card-text">Du var <b>{{s.get_difference_pct|floatformat:1}}%</b> fra den rigtige salgspris.<br>På linket <a href="{{x.home_id}}">her</a> kan du se boligen på ejendomsmæglerens hjemmeside.</p>
+                          {% endfor %}
+                        </div>
+                        <!-- Product Card-->
+                          <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col" style='width:50%;'>Info</th>
+                                    <th scope="col" style='width:50%;'>Data</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Dit gæt:</td>
+                                    {% for a in x.scores.all %}  
+                                    {% if user == a.user %}
+                                    <td>{{a.priceguess|floatformat:0}} kr</td> 
+                                    {% endif %} 
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>Udbudspris:</td>
+                                    <td>{{x.pris|floatformat:0}} kr</td>
+                                </tr>
+                                <tr>
+                                    {% for d in x.scores.all %} 
+                                    {% if user == d.user %}       
+                                        <td>Difference:</td>
+                                        <td>{{d.get_difference|floatformat:0}} kr</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for p in x.scores.all %} 
+                                    {% if user == p.user %}       
+                                        <td>%-Difference:</td>
+                                        <td>{{p.get_difference_pct|floatformat:0}}%</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>By:</td>
+                                    <td>{{x.by}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Areal:</td>
+                                    <td>{{x.areal|floatformat:0}} m2</td>
+                                </tr>
+                                <tr>
+                                    {% for p in x.scores.all %} 
+                                    {% if user == p.user %}       
+                                        <td>Pris pr m2:</td>
+                                        <td>{{p.get_price_per_square_meters|floatformat:0}} kr</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for p in x.scores.all %} 
+                                    {% if user == p.user %}       
+                                        <td>Interesse:</td>
+                                        <td>{{p.bidinterest}}</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for p in x.scores.all %} 
+                                    {% if user == p.user %}       
+                                        <td>Score:</td>
+                                        <td>{{p.score}}</td>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <td>Mægler-link:</td>
+                                    <td><a href={{x.home_id}}>Link</a></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                        <div class="card-body">
+                          <a class="btn btn-secondary btn-sm px-4 me-sm-3" href="/highscore">Se highscore</a>
+                          <a class="btn btn-primary btn-sm px-4 me-sm-3" href="/bolig">Næste bolig</a>
+                        </div>
+                      </div>
+                      {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock content %}          
+
