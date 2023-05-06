@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("DJANGO_SECRET_KEY", default=None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DJANGO_DEBUG", default=False) 
+DEBUG = False
 
-ALLOWED_HOSTS = tuple(config("DJANGO_ALLOWED_HOSTS", default=None))
+ALLOWED_HOSTS = ['bspil.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
